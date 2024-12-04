@@ -1,0 +1,22 @@
+#!/home/codespace/.python/current/bin/python3
+from pymongo import MongoClient
+
+CONNECTION_STRING = "mongodb+srv://ds2022:sds_class27@cluster0.m3fek.mongodb.net"
+
+client = MongoClient(CONNECTION_STRING)
+
+db = client["cqb3tc"]
+
+db.artists.insert_many( [
+    {"name": "yeonjun", "age": 23, "hair": "pink"},
+    {"name": "soobin", "age": 22, "hair": "blue"},
+    {"name": "beomgyu", "age": 20, "hair": "black"},
+    {"name": "taehyun", "age": 20, "hair": "black"},
+    {"name": "hueningkai", "age": 20, "hair": "white"}
+] );
+
+results = db.artists.find({"age": 20});
+
+for artist in results:
+    print(artist)
+client.close()
